@@ -38,7 +38,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
             const result = await generateModelImage(file);
             setGeneratedModelUrl(result);
         } catch (err) {
-            setError(getFriendlyErrorMessage(err, 'Failed to create model'));
+            setError(getFriendlyErrorMessage(err, 'Gagal bikin model'));
             setUserImageUrl(null);
         } finally {
             setIsGenerating(false);
@@ -81,20 +81,20 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
           <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
             <div className="max-w-lg">
               <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 leading-tight">
-                Create Your Model for Any Look.
+                Bikin Model Kamu Sendiri, Buat Gaya Apa Aja.
               </h1>
               <p className="mt-4 text-lg text-gray-600">
-                Ever wondered how an outfit would look on you? Stop guessing. Upload a photo and see for yourself. Our AI creates your personal model, ready to try on anything.
+                Pernah kepikiran baju ini cocok gak ya di kamu? Gak usah nebak-nebak lagi. Upload fotomu dan liat sendiri. AI kita bakal bikinin model personal buatmu, siap nyobain baju apa aja.
               </p>
               <hr className="my-8 border-gray-200" />
               <div className="flex flex-col items-center lg:items-start w-full gap-3">
                 <label htmlFor="image-upload-start" className="w-full relative flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gray-900 rounded-md cursor-pointer group hover:bg-gray-700 transition-colors">
                   <UploadCloudIcon className="w-5 h-5 mr-3" />
-                  Upload Photo
+                  Upload Foto
                 </label>
                 <input id="image-upload-start" type="file" className="hidden" accept="image/png, image/jpeg, image/webp, image/avif, image/heic, image/heif" onChange={handleFileChange} />
-                <p className="text-gray-500 text-sm">Select a clear, full-body photo. Face-only photos also work, but full-body is preferred for best results.</p>
-                <p className="text-gray-500 text-xs mt-1">By uploading, you agree not to create harmful, explicit, or unlawful content. This service is for creative and responsible use only.</p>
+                <p className="text-gray-500 text-sm">Pilih foto yang jelas, seluruh badan. Foto muka doang juga bisa sih, tapi biar hasilnya maksimal mending seluruh badan.</p>
+                <p className="text-gray-500 text-xs mt-1">Dengan nge-upload, kamu setuju gak akan bikin konten aneh-aneh, ya. Servis ini buat seneng-seneng dan yang wajar aja.</p>
                 {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
               </div>
             </div>
@@ -121,25 +121,25 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
           <div className="md:w-1/2 flex-shrink-0 flex flex-col items-center md:items-start">
             <div className="text-center md:text-left">
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 leading-tight">
-                The New You
+                Ini Kamu Versi Baru
               </h1>
               <p className="mt-2 text-md text-gray-600">
-                Drag the slider to see your transformation.
+                Geser buat liat transformasimu.
               </p>
             </div>
             
             {isGenerating && (
               <div className="flex items-center gap-3 text-lg text-gray-700 font-serif mt-6">
                 <Spinner />
-                <span>Generating your model...</span>
+                <span>Lagi bikinin modelmu...</span>
               </div>
             )}
 
             {error && 
               <div className="text-center md:text-left text-red-600 max-w-md mt-6">
-                <p className="font-semibold">Generation Failed</p>
+                <p className="font-semibold">Gagal Bikin Modelnya</p>
                 <p className="text-sm mb-4">{error}</p>
-                <button onClick={reset} className="text-sm font-semibold text-gray-700 hover:underline">Try Again</button>
+                <button onClick={reset} className="text-sm font-semibold text-gray-700 hover:underline">Coba Lagi</button>
               </div>
             }
             
@@ -156,13 +156,13 @@ const StartScreen: React.FC<StartScreenProps> = ({ onModelFinalized }) => {
                     onClick={reset}
                     className="w-full sm:w-auto px-6 py-3 text-base font-semibold text-gray-700 bg-gray-200 rounded-md cursor-pointer hover:bg-gray-300 transition-colors"
                   >
-                    Use Different Photo
+                    Pakai Foto Lain
                   </button>
                   <button 
                     onClick={() => onModelFinalized(generatedModelUrl)}
                     className="w-full sm:w-auto relative inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gray-900 rounded-md cursor-pointer group hover:bg-gray-700 transition-colors"
                   >
-                    Proceed to Styling &rarr;
+                    Lanjut Mix & Match &rarr;
                   </button>
                 </motion.div>
               )}

@@ -60,7 +60,7 @@ const WardrobePanel: React.FC<WardrobePanelProps> = ({ onGarmentSelect, activeGa
             const file = await urlToFile(item.url, item.name);
             onGarmentSelect(file, item);
         } catch (err) {
-            const detailedError = `Failed to load wardrobe item. This is often a CORS issue. Check the developer console for details.`;
+            const detailedError = `Gagal ngambil item dari lemari. Biasanya ini masalah CORS. Cek konsol developer buat detailnya.`;
             setError(detailedError);
             console.error(`[CORS Check] Failed to load and convert wardrobe item from URL: ${item.url}. The browser's console should have a specific CORS error message if that's the issue.`, err);
         }
@@ -84,7 +84,7 @@ const WardrobePanel: React.FC<WardrobePanelProps> = ({ onGarmentSelect, activeGa
 
   return (
     <div className="pt-6 border-t border-gray-400/50">
-        <h2 className="text-xl font-serif tracking-wider text-gray-800 mb-3">Wardrobe</h2>
+        <h2 className="text-xl font-serif tracking-wider text-gray-800 mb-3">Lemari Baju</h2>
         <div className="grid grid-cols-3 gap-3">
             {wardrobe.map((item) => {
             const isActive = activeGarmentIds.includes(item.id);
@@ -94,7 +94,7 @@ const WardrobePanel: React.FC<WardrobePanelProps> = ({ onGarmentSelect, activeGa
                 onClick={() => handleGarmentClick(item)}
                 disabled={isLoading || isActive}
                 className="relative aspect-square border rounded-lg overflow-hidden transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 group disabled:opacity-60 disabled:cursor-not-allowed"
-                aria-label={`Select ${item.name}`}
+                aria-label={`Pilih ${item.name}`}
                 >
                 <img src={item.url} alt={item.name} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -115,7 +115,7 @@ const WardrobePanel: React.FC<WardrobePanelProps> = ({ onGarmentSelect, activeGa
             </label>
         </div>
         {wardrobe.length === 0 && (
-             <p className="text-center text-sm text-gray-500 mt-4">Your uploaded garments will appear here.</p>
+             <p className="text-center text-sm text-gray-500 mt-4">Baju yang kamu upload bakal muncul di sini.</p>
         )}
         {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
     </div>

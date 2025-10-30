@@ -18,12 +18,12 @@ import { getFriendlyErrorMessage } from './lib/utils';
 import Spinner from './components/Spinner';
 
 const POSE_INSTRUCTIONS = [
-  "Full frontal view, hands on hips",
-  "Slightly turned, 3/4 view",
-  "Side profile view",
-  "Jumping in the air, mid-action shot",
-  "Walking towards camera",
-  "Leaning against a wall",
+  "Gaya depan, tangan di pinggang",
+  "Nengok dikit, 3/4 badan",
+  "Gaya dari samping",
+  "Lagi loncat, candid gitu",
+  "Jalan ke arah kamera",
+  "Nyender di tembok",
 ];
 
 const useMediaQuery = (query: string): boolean => {
@@ -124,7 +124,7 @@ const App: React.FC = () => {
 
     setError(null);
     setIsLoading(true);
-    setLoadingMessage(`Adding ${garmentInfo.name}...`);
+    setLoadingMessage(`Nambahin ${garmentInfo.name}...`);
 
     try {
       const newImageUrl = await generateVirtualTryOnImage(displayImageUrl, garmentFile);
@@ -150,7 +150,7 @@ const App: React.FC = () => {
         return [...prev, garmentInfo];
       });
     } catch (err) {
-      setError(getFriendlyErrorMessage(err, 'Failed to apply garment'));
+      setError(getFriendlyErrorMessage(err, 'Gagal makein baju'));
     } finally {
       setIsLoading(false);
       setLoadingMessage('');
@@ -183,7 +183,7 @@ const App: React.FC = () => {
 
     setError(null);
     setIsLoading(true);
-    setLoadingMessage(`Changing pose...`);
+    setLoadingMessage(`Ganti pose dulu ya...`);
     
     const prevPoseIndex = currentPoseIndex;
     // Optimistically update the pose index so the pose name changes in the UI
@@ -198,7 +198,7 @@ const App: React.FC = () => {
         return newHistory;
       });
     } catch (err) {
-      setError(getFriendlyErrorMessage(err, 'Failed to change pose'));
+      setError(getFriendlyErrorMessage(err, 'Gagal ganti pose'));
       // Revert pose index on failure
       setCurrentPoseIndex(prevPoseIndex);
     } finally {
@@ -259,14 +259,14 @@ const App: React.FC = () => {
                   <button 
                     onClick={() => setIsSheetCollapsed(!isSheetCollapsed)} 
                     className="md:hidden w-full h-8 flex items-center justify-center bg-gray-100/50"
-                    aria-label={isSheetCollapsed ? 'Expand panel' : 'Collapse panel'}
+                    aria-label={isSheetCollapsed ? 'Buka panel' : 'Tutup panel'}
                   >
                     {isSheetCollapsed ? <ChevronUpIcon className="w-6 h-6 text-gray-500" /> : <ChevronDownIcon className="w-6 h-6 text-gray-500" />}
                   </button>
                   <div className="p-4 md:p-6 pb-20 overflow-y-auto flex-grow flex flex-col gap-8">
                     {error && (
                       <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-md" role="alert">
-                        <p className="font-bold">Error</p>
+                        <p className="font-bold">Waduh, eror</p>
                         <p>{error}</p>
                       </div>
                     )}

@@ -77,7 +77,7 @@ const Canvas: React.FC<CanvasProps> = ({ displayImageUrl, onStartOver, isLoading
           className="absolute top-4 left-4 z-30 flex items-center justify-center text-center bg-white/60 border border-gray-300/80 text-gray-700 font-semibold py-2 px-4 rounded-full transition-all duration-200 ease-in-out hover:bg-white hover:border-gray-400 active:scale-95 text-sm backdrop-blur-sm"
       >
           <RotateCcwIcon className="w-4 h-4 mr-2" />
-          Start Over
+          Ulang dari Awal
       </button>
 
       {/* Image Display or Placeholder */}
@@ -92,7 +92,7 @@ const Canvas: React.FC<CanvasProps> = ({ displayImageUrl, onStartOver, isLoading
         ) : (
             <div className="w-[400px] h-[600px] bg-gray-100 border border-gray-200 rounded-lg flex flex-col items-center justify-center">
               <Spinner />
-              <p className="text-md font-serif text-gray-600 mt-4">Loading Model...</p>
+              <p className="text-md font-serif text-gray-600 mt-4">Sabar ya, lagi siapin model...</p>
             </div>
         )}
         
@@ -149,7 +149,7 @@ const Canvas: React.FC<CanvasProps> = ({ displayImageUrl, onStartOver, isLoading
           <div className="flex items-center justify-center gap-2 bg-white/60 backdrop-blur-md rounded-full p-2 border border-gray-300/50">
             <button 
               onClick={handlePreviousPose}
-              aria-label="Previous pose"
+              aria-label="Pose sebelumnya"
               className="p-2 rounded-full hover:bg-white/80 active:scale-90 transition-all disabled:opacity-50"
               disabled={isLoading}
             >
@@ -160,7 +160,7 @@ const Canvas: React.FC<CanvasProps> = ({ displayImageUrl, onStartOver, isLoading
             </span>
             <button 
               onClick={handleNextPose}
-              aria-label="Next pose"
+              aria-label="Pose selanjutnya"
               className="p-2 rounded-full hover:bg-white/80 active:scale-90 transition-all disabled:opacity-50"
               disabled={isLoading}
             >

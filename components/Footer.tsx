@@ -6,12 +6,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const REMIX_SUGGESTIONS = [
-  "Remix idea: Generate a shareable lookbook.",
-  "Remix idea: Integrate an e-commerce API to find similar items.",
-  "Remix idea: Add accessories like hats, sunglasses, or bags.",
-  "Remix idea: Create a 'style score' for outfits.",
-  "Remix idea: Let users save their favorite outfits.",
-  "Remix idea: Generate different colorways for garments.",
+  "Ide ngab: Bikin lookbook yang bisa di-share.",
+  "Ide ngab: Sambungin ke e-commerce buat cari barang mirip.",
+  "Ide ngab: Tambahin aksesoris kayak topi, kacamata, atau tas.",
+  "Ide ngab: Bikin 'skor gaya' buat outfitmu.",
+  "Ide ngab: Bikin fitur simpen outfit favorit.",
+  "Ide ngab: Bikin pilihan warna lain buat bajunya.",
 ];
 
 interface FooterProps {
@@ -33,14 +33,14 @@ const Footer: React.FC<FooterProps> = ({ isOnDressingScreen = false }) => {
     <footer className={`fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-gray-200/60 p-3 z-50 ${isOnDressingScreen ? 'hidden sm:block' : ''}`}>
       <div className="mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600 max-w-7xl px-4">
         <p>
-          Created by{' '}
+          Dibuat oleh{' '}
           <a 
-            href="https://x.com/ammaar" 
+            href="https://x.com/irfanarv" 
             target="_blank" 
             rel="noopener noreferrer"
             className="font-semibold text-gray-800 hover:underline"
           >
-            @ammaar
+            @irfanarv
           </a>
         </p>
         <div className="h-4 mt-1 sm:mt-0 flex items-center overflow-hidden">

@@ -18,9 +18,9 @@ const fileToPart = async (file: File) => {
 
 const dataUrlToParts = (dataUrl: string) => {
     const arr = dataUrl.split(',');
-    if (arr.length < 2) throw new Error("Invalid data URL");
+    if (arr.length < 2) throw new Error("Data URL gak valid");
     const mimeMatch = arr[0].match(/:(.*?);/);
-    if (!mimeMatch || !mimeMatch[1]) throw new Error("Could not parse MIME type from data URL");
+    if (!mimeMatch || !mimeMatch[1]) throw new Error("Gak bisa baca tipe MIME dari data URL");
     return { mimeType: mimeMatch[1], data: arr[1] };
 }
 
@@ -32,7 +32,7 @@ const dataUrlToPart = (dataUrl: string) => {
 const handleApiResponse = (response: GenerateContentResponse): string => {
     if (response.promptFeedback?.blockReason) {
         const { blockReason, blockReasonMessage } = response.promptFeedback;
-        const errorMessage = `Request was blocked. Reason: ${blockReason}. ${blockReasonMessage || ''}`;
+        const errorMessage = `Permintaan diblokir. Alasan: ${blockReason}. ${blockReasonMessage || ''}`;
         throw new Error(errorMessage);
     }
 
@@ -47,11 +47,11 @@ const handleApiResponse = (response: GenerateContentResponse): string => {
 
     const finishReason = response.candidates?.[0]?.finishReason;
     if (finishReason && finishReason !== 'STOP') {
-        const errorMessage = `Image generation stopped unexpectedly. Reason: ${finishReason}. This often relates to safety settings.`;
+        const errorMessage = `Pembuatan gambar berhenti tiba-tiba. Alasan: ${finishReason}. Biasanya ini karena setelan keamanan.`;
         throw new Error(errorMessage);
     }
     const textFeedback = response.text?.trim();
-    const errorMessage = `The AI model did not return an image. ` + (textFeedback ? `The model responded with text: "${textFeedback}"` : "This can happen due to safety filters or if the request is too complex. Please try a different image.");
+    const errorMessage = `Model AI-nya gak ngasih gambar. ` + (textFeedback ? `Modelnya malah bales teks: "${textFeedback}"` : "Ini bisa terjadi karena filter keamanan atau permintaannya terlalu ribet. Coba pake gambar lain ya.");
     throw new Error(errorMessage);
 };
 
